@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://daf0bt8bg8bsw"]
+
+[ext_resource type="Texture2D" uid="uid://ca43te0dah5qt" path="res://Assets/Tree-Assets.png" id="1_cxy32"]
+[ext_resource type="PackedScene" uid="uid://dosp056uq0o0m" path="res://player.tscn" id="2_e2n8f"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xcpai"]
+texture = ExtResource("1_cxy32")
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:2/0 = 0
+1:2/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:2/0/physics_layer_0/angular_velocity = 0.0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_6n03g"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_xcpai")
+
+[node name="World" type="Node2D"]
+
+[node name="TileMap" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_6n03g")
+format = 2
+layer_0/tile_data = PackedInt32Array(458767, 65536, 1, 458768, 65536, 1, 458769, 65536, 1, 458770, 65536, 1, 458771, 65536, 1, 458772, 65536, 1, 851968, 65536, 2, 851969, 65536, 2, 851970, 65536, 2, 851971, 65536, 2, 851972, 65536, 2, 851973, 65536, 2, 851974, 65536, 2, 851975, 65536, 2, 851976, 65536, 2, 851977, 65536, 2, 851978, 65536, 2, 851979, 65536, 2, 851980, 65536, 2, 851981, 65536, 2, 851982, 65536, 2, 851983, 65536, 2, 851984, 65536, 2, 851985, 65536, 2, 851986, 65536, 2, 851987, 65536, 2, 851988, 65536, 2, 786432, 65536, 1, 786433, 65536, 1, 786434, 65536, 1, 786435, 65536, 1, 786436, 65536, 1, 786437, 65536, 1, 786438, 65536, 1, 786439, 65536, 1, 786440, 65536, 1, 786441, 65536, 1, 720906, 65536, 1, 720907, 65536, 1, 720908, 65536, 1, 786445, 65536, 1, 786446, 65536, 1, 786447, 65536, 1, 786448, 65536, 1, 786449, 65536, 1, 786450, 65536, 1, 786451, 65536, 1, 786452, 65536, 1, 786442, 65536, 2, 786443, 65536, 2, 786444, 65536, 2)
+
+[node name="Player" parent="." instance=ExtResource("2_e2n8f")]
+position = Vector2(41, 58)
