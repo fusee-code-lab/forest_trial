@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://dosp056uq0o0m"]
+[gd_scene load_steps=13 format=3 uid="uid://dosp056uq0o0m"]
 
 [ext_resource type="Texture2D" uid="uid://dgc1hxb3pynjl" path="res://Character/Idle/Idle-Sheet.png" id="1_0gftj"]
 [ext_resource type="Script" path="res://player.gd" id="1_g006q"]
 [ext_resource type="Texture2D" uid="uid://d4kp7g0fu4vkg" path="res://Character/Run/Run-Sheet.png" id="2_4w36g"]
 [ext_resource type="Texture2D" uid="uid://byvrsgry5wlt0" path="res://Character/Jump-Start/Jump-Start-Sheet.png" id="4_epa4c"]
+[ext_resource type="Texture2D" uid="uid://brjmmdthwp4rj" path="res://Character/Jump-End/Jump-End-Sheet.png" id="5_ypf8h"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sh1pu"]
 size = Vector2(10, 41)
@@ -118,6 +119,42 @@ tracks/8/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Jump-end-sheet:region_rect")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 192, 64)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Jump-end-sheet:hframes")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Jump-end-sheet:frame")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
 [sub_resource type="Animation" id="Animation_nii7y"]
 resource_name = "idle"
@@ -158,6 +195,47 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_kifuh"]
+resource_name = "jump_end"
+length = 0.3
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Jump-end-sheet:region_rect")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Rect2(0, 0, 192, 64)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Jump-end-sheet:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Jump-end-sheet:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [0, 1, 2]
 }
 
 [sub_resource type="Animation" id="Animation_lcwe6"]
@@ -246,7 +324,8 @@ tracks/2/keys = {
 _data = {
 "RESET": SubResource("Animation_5711j"),
 "idle": SubResource("Animation_nii7y"),
-"jump": SubResource("Animation_lcwe6"),
+"jump_end": SubResource("Animation_kifuh"),
+"jump_start": SubResource("Animation_lcwe6"),
 "run": SubResource("Animation_w08cu")
 }
 
@@ -261,7 +340,6 @@ region_enabled = true
 region_rect = Rect2(0, 0, 640, 64)
 
 [node name="Idle-sheet" type="Sprite2D" parent="."]
-visible = false
 texture = ExtResource("1_0gftj")
 hframes = 4
 frame = 2
@@ -278,8 +356,13 @@ libraries = {
 }
 
 [node name="Jump-start-sheet" type="Sprite2D" parent="."]
-visible = false
 texture = ExtResource("4_epa4c")
 hframes = 4
 region_enabled = true
 region_rect = Rect2(0, 0, 256, 64)
+
+[node name="Jump-end-sheet" type="Sprite2D" parent="."]
+texture = ExtResource("5_ypf8h")
+hframes = 3
+region_enabled = true
+region_rect = Rect2(0, 0, 192, 64)

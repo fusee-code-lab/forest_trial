@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var idle_sheet = $"Idle-sheet"
 @onready var run_sheet = $"Run-sheet"
 @onready var jump_start_sheet = $"Jump-start-sheet"
+@onready var jump_end_sheet = $"Jump-end-sheet"
 @onready var animation_player = $AnimationPlayer
 
 const RUN_SPEED := 200.0
@@ -17,14 +18,17 @@ func _sheet_factory(type: String) -> void:
 			idle_sheet.set_visible(true)
 			run_sheet.set_visible(false)
 			jump_start_sheet.set_visible(false)
+			jump_end_sheet.set_visible(false)
 		"run":
 			idle_sheet.set_visible(false)
 			run_sheet.set_visible(true)
 			jump_start_sheet.set_visible(false)
-		"jump":
+			jump_end_sheet.set_visible(false)
+		"jump_start":
 			idle_sheet.set_visible(false)
 			run_sheet.set_visible(false)
 			jump_start_sheet.set_visible(true)
+			jump_end_sheet.set_visible(false)
 			
 	animation_player.play(type)
 	
@@ -47,7 +51,7 @@ func _physics_process(delta: float) -> void:
 		else:
 			_sheet_factory("run")
 	else:
-		_sheet_factory("jump")
+		_sheet_factory("jump_start")
 		
 	if not is_zero_approx(direction):
 		run_sheet.flip_h = direction < 0
